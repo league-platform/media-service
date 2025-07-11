@@ -34,11 +34,6 @@ jobs:
             sudo systemctl enable --now docker
             sudo usermod -aG docker ec2-user
 
-            mkdir -p ~/.docker/cli-plugins
-            curl -SL https://github.com/docker/compose/releases/download/v2.27.1/docker-compose-linux-x86_64               -o ~/.docker/cli-plugins/docker-compose
-            chmod +x ~/.docker/cli-plugins/docker-compose
-            sudo ln -sf ~/.docker/cli-plugins/docker-compose /usr/local/bin/docker-compose
-
             cd /home/ec2-user
 
             if [ ! -d media-service ]; then
@@ -54,3 +49,4 @@ jobs:
             docker compose down || true
             docker compose up -d --build
           EOF
+
